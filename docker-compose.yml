@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  shonandeb:
+    image: jorgesus/er:v8
+    environment: 
+        - MYSQL_ROOT_PASSWORD=1234
+        - MYSQL_DATABASE=shonan2
+    ports:
+      - 4000:3306
+  app:
+    build: .
+    
+    depends_on:
+        - shonandeb
+    links:
+        - shonandeb
+    ports:
+        - 5000:5000
